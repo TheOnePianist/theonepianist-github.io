@@ -1,1 +1,1 @@
-# theonepianist-github.io
+# theonepianist.github.io
