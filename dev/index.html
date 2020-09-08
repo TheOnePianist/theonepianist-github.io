@@ -1,8 +1,19 @@
 <html>
     <head>
         <title>Dev site</title>
+        <script>
+            function FindChord(){
+
+            var CurentNote = document.getElementById("inputnote").value;
+            alert(CurentNote);        
+            }
+
+
+        </script>
     </head>
     <body>
-        This is a dev shared site.
+        This is a dev shared site.</br>
+        <input type="text" id="inputnote" value="C">
+        <button onclick="FindChord()">submit</button>
     </body>
 </html>

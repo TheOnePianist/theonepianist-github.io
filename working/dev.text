@@ -1,0 +1,10 @@
+website design
+    add simple textbox that accepts one character (note)
+    add submit button
+
+button click event
+    take note from textbox place it in a jvascript variable 
+    take variable and compare it against a list and find a match
+
+The list
+    
