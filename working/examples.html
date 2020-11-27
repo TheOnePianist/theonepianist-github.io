@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Propositional Logic Proofs</h3>
+
+<input type="text" id="myText" value="(F->G)->(G-H),F->G,F|-H">
+
+<p>Generate proof.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+function PremiseProcessor(str) {
+  // find the symbol outside the parenthesis
+  //// warning cant do string everywhere, it will not always contain the right string
+  fmc = FindMainConnective(str);
+  //str = RemoveOuterParenthesis(str);
+  alert(fmc);
+  //alert(RemoveOuterParenthesis);
+
+  // error handling, unable to determine main connective
+}
+
+function FindMainConnective(str){
+  var ArrowPositions = "";
+  var ArrowsFound = 0;
+  var countarr = 0;
+  for (ArrowCounter = 1; ArrowCounter <= str.length; ArrowCounter++) {
+    var LookForArrow = str.charAt(ArrowCounter).concat(str.charAt(ArrowCounter+1))
+    if (LookForArrow == "->"){
+      ArrowPositions += (ArrowCounter + 1) + ","
+      //countarr++;
+    }
+    if (countarr > 0){
+      var returnthis = "found it"
+
+      //var ArrowArray = ArrowPositions.split(",")
+
+    } else{
+      var returnthis = "not found";
+    }
+  }
+  return ArrowPositions;
+}
+  // find the main connective for this premise
+  // get character length of premise
+  //alert(str.length);
+  //for (CharCounter = 0; CharCounter < str.length; CharCounter++) {  
+  //return
+  // build an array containing all of the positions of the connectives
+  // taking the easy approach and using the split string method
+  //var ArrowConnective = str.split("->");
+  //for (ArrowCounter = 0; ArrowCounter < ArrowConnective.length; ArrowCounter++) {  
+  //var asdf = 
+  //}
+  //if (ArrowCounter > 9){
+  //  alert("arrow found")
+  //  return ArrowConnective[0];
+
+
+function RemoveOuterParenthesis(str) {
+  // string replace method removes left outer parenthesis
+  var RemoveLeftParenthesis = str.replace(/^\(/g,"");
+  // string replace method removes right outer parenthesis
+  var RemoveRightParenthesis = RemoveLeftParenthesis.replace(/\)$/g,"");
+  var PremiseWithRemovedOuterParenthesis = RemoveRightParenthesis
+  return PremiseWithRemovedOuterParenthesis
+  // alert(PremiseWithRemovedOuterParenthesis);
+}
+
+function myFunction() {
+  document.getElementById("proof").innerHTML = ""
+  var StringOfSymbols = document.getElementById("myText").value;
+  //document.getElementById("demo").innerHTML = Premise;
+  //alert(x.length);
+
+  // find the turnstile
+  var SplitByTurnstile = StringOfSymbols.split("|-")
+ // get the premises, everything to the left of the turnstile
+  var Premises = SplitByTurnstile[0]
+ // get the therefore, everything to the right of the turnstile
+ var Therefore = SplitByTurnstile[1]
+ var Premise = Premises.split(",")
+ // send each premise to be processed individually
+ // main loop
+ for (PremiseCounter = 0; PremiseCounter < Premise.length; PremiseCounter++) {
+   // writes a premise on each line
+   document.getElementById("proof").innerHTML += Premise[PremiseCounter]
+   // append line break between each premise
+   document.getElementById("proof").innerHTML += "</br>"
+   //alert("test")
+   PremiseProcessor(Premise[PremiseCounter]);
+   
+ }
+ document.getElementById("proof").innerHTML += Therefore;
+}
+</script>
+
+<p id="proof"></p>
+
+</body>
+</html>
